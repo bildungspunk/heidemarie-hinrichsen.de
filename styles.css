@@ -1,8 +1,9 @@
 :root {
   color-scheme: light;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f5f1e8;
-  color: #2c332f;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f9eadb;
+  color: #49313d;
+  font-synthesis: none;
 }
 
 * {
@@ -10,43 +11,355 @@
 }
 
 body {
+  position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   margin: 0;
+  overflow-x: hidden;
   display: grid;
   place-items: center;
-  padding: 2rem;
+  padding: clamp(1rem, 4vw, 3.5rem);
   background:
-    radial-gradient(circle at 15% 20%, rgb(255 255 255 / 75%), transparent 32rem),
-    #f5f1e8;
+    radial-gradient(circle at 8% 12%, rgb(255 255 255 / 78%) 0 4rem, transparent 20rem),
+    radial-gradient(circle at 92% 92%, rgb(240 137 116 / 22%) 0 3rem, transparent 24rem),
+    linear-gradient(145deg, #fff8ed 0%, #f9eadb 52%, #f2dfd8 100%);
 }
 
-main {
-  width: min(46rem, 100%);
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: 0.2;
+  background-image: radial-gradient(#a85b76 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(to bottom right, black, transparent 48%);
+}
+
+.glow {
+  position: fixed;
+  z-index: -1;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.glow--top {
+  top: -13rem;
+  right: -8rem;
+  background: rgb(244 187 91 / 22%);
+}
+
+.glow--bottom {
+  bottom: -17rem;
+  left: -9rem;
+  background: rgb(139 74 108 / 14%);
+}
+
+.card {
+  position: relative;
+  width: min(69rem, 100%);
+  min-height: min(42rem, calc(100svh - 7rem));
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+  border: 1px solid rgb(117 71 92 / 13%);
+  border-radius: clamp(1.7rem, 4vw, 3.25rem);
+  background: rgb(255 253 248 / 90%);
+  box-shadow:
+    0 2.2rem 5rem rgb(100 58 72 / 13%),
+    inset 0 1px 0 rgb(255 255 255 / 90%);
+}
+
+.card::after {
+  position: absolute;
+  right: -5rem;
+  bottom: -10rem;
+  width: 30rem;
+  height: 30rem;
+  border: 1px solid rgb(123 66 96 / 9%);
+  border-radius: 50%;
+  content: "";
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(43rem, 100%);
+  padding: clamp(2rem, 6vw, 5.5rem);
 }
 
 .eyebrow {
-  margin: 0 0 1.25rem;
-  color: #66736b;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.4rem;
+  color: #795167;
   font-size: 0.78rem;
-  font-weight: 650;
-  letter-spacing: 0.14em;
+  font-weight: 750;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.eyebrow span {
+  width: 0.68rem;
+  height: 0.68rem;
+  border-radius: 50%;
+  background: #ee806e;
+  box-shadow: 0 0 0 0.34rem rgb(238 128 110 / 14%);
 }
 
 h1 {
   max-width: 12ch;
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-size: clamp(3rem, 7.6vw, 6.6rem);
   font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
+  letter-spacing: -0.06em;
+  line-height: 0.91;
+  text-wrap: balance;
+}
+
+h1 em {
+  display: block;
+  margin-top: 0.16em;
+  color: #a54869;
+  font-weight: 400;
 }
 
 .intro {
-  max-width: 36rem;
+  max-width: 37rem;
   margin: 2rem 0 0;
-  color: #526058;
-  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-  line-height: 1.6;
+  color: #604b54;
+  font-size: clamp(1.08rem, 2.2vw, 1.32rem);
+  line-height: 1.62;
+}
+
+.note {
+  width: fit-content;
+  max-width: 34rem;
+  margin: 1.55rem 0 0;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid #edaa61;
+  border-radius: 0 0.8rem 0.8rem 0;
+  color: #735364;
+  background: #fff5df;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.signature {
+  margin: 2rem 0 0;
+  color: #8a6474;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.signature span {
+  margin-left: 0.2rem;
+  color: #e66f68;
+  font-size: 0.8em;
+}
+
+.signature strong {
+  display: block;
+  margin-top: 0.22rem;
+  color: #49313d;
+  font-size: 1.22rem;
+  font-weight: 400;
+}
+
+.garden {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 43%;
+  height: 100%;
+  min-width: 20rem;
+  overflow: hidden;
+  background:
+    linear-gradient(148deg, transparent 13%, rgb(247 193 167 / 17%) 13.2% 14%, transparent 14.2%),
+    radial-gradient(circle at 65% 27%, rgb(244 187 91 / 22%) 0 7rem, transparent 7.1rem);
+}
+
+.sun {
+  position: absolute;
+  top: 12%;
+  right: 11%;
+  width: clamp(9rem, 18vw, 14rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f6c56e;
+  box-shadow: 0 0 0 1.8rem rgb(246 197 110 / 13%);
+}
+
+.flower,
+.spark {
+  position: absolute;
+  color: #a54869;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+  text-shadow: 0 0.35rem 0.6rem rgb(111 57 76 / 10%);
+}
+
+.flower--one {
+  right: 10%;
+  bottom: 7%;
+  font-size: clamp(9rem, 20vw, 15rem);
+  transform: rotate(10deg);
+}
+
+.flower--two {
+  right: 47%;
+  bottom: 8%;
+  color: #ec816f;
+  font-size: clamp(5rem, 11vw, 8rem);
+  transform: rotate(-14deg);
+}
+
+.flower--three {
+  right: 2%;
+  bottom: 36%;
+  color: #7d8667;
+  font-size: clamp(3rem, 7vw, 5rem);
+  transform: rotate(16deg);
+}
+
+.spark--one {
+  top: 17%;
+  left: 16%;
+  color: #a54869;
+  font-size: 2.4rem;
+}
+
+.spark--two {
+  top: 42%;
+  right: 18%;
+  color: #ee806e;
+  font-size: 1.5rem;
+}
+
+.leaf {
+  position: absolute;
+  width: 5rem;
+  height: 2.4rem;
+  border-radius: 100% 0 100% 0;
+  background: #849277;
+}
+
+.leaf--one {
+  right: 33%;
+  bottom: 5%;
+  transform: rotate(-24deg);
+}
+
+.leaf--two {
+  right: -1rem;
+  bottom: 30%;
+  transform: rotate(38deg) scale(0.7);
+}
+
+footer {
+  position: absolute;
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  bottom: 1rem;
+  color: rgb(91 59 73 / 58%);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  body {
+    display: block;
+    padding: 0.75rem 0.75rem 4rem;
+  }
+
+  .card {
+    min-height: calc(100svh - 5rem);
+    align-items: start;
+  }
+
+  .content {
+    padding-top: clamp(15rem, 55vw, 22rem);
+  }
+
+  .garden {
+    width: 100%;
+    height: 17rem;
+    min-width: 0;
+  }
+
+  .sun {
+    top: 2.5rem;
+    right: 12%;
+    width: 9rem;
+  }
+
+  .flower--one {
+    right: 2%;
+    bottom: -2.5rem;
+    font-size: 9rem;
+  }
+
+  .flower--two {
+    right: auto;
+    left: 8%;
+    bottom: -1rem;
+    font-size: 6rem;
+  }
+
+  .flower--three {
+    right: 42%;
+    bottom: 1rem;
+    font-size: 3.2rem;
+  }
+
+  .spark--one {
+    top: 2rem;
+    left: 11%;
+  }
+
+  h1 {
+    max-width: 11ch;
+  }
+}
+
+@media (max-width: 390px) {
+  .content {
+    padding-inline: 1.4rem;
+  }
+
+  h1 {
+    font-size: 2.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spark {
+    animation: twinkle 3.4s ease-in-out infinite alternate;
+  }
+
+  .spark--two {
+    animation-delay: -1.7s;
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.45;
+    transform: scale(0.85) rotate(-6deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.08) rotate(6deg);
+  }
 }
