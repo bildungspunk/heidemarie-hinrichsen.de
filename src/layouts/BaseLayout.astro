@@ -1,0 +1,76 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  pageClass?: string;
+  socialImage?: string | null;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  pageClass = "",
+  socialImage = "/assets/og.png",
+} = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site);
+const socialImageUrl = socialImage ? new URL(socialImage, Astro.site) : null;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#f6efe4" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+    {socialImageUrl && <meta property="og:image:alt" content="Heidi Hinrichsen – Selflove & Selfcare für Frauen" />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
+    <title>{title}</title>
+  </head>
+  <body class={pageClass}>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Heidi Hinrichsen – Startseite">
+        <span>Heidi</span>
+        <small>Hinrichsen</small>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="/#ueber-heidi">Über Heidi</a>
+        <a href="/kurse/">Kurse</a>
+        <a href="/#empfehlungen">Empfehlungen</a>
+        <a class="nav-social" href="https://www.instagram.com/loesungsfinderin/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </nav>
+    </header>
+    <main id="inhalt">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <a class="wordmark wordmark--footer" href="/">
+          <span>Heidi</span><small>Hinrichsen</small>
+        </a>
+        <p>Impulse und Kurse für eine liebevolle Beziehung zu dir selbst.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/loesungsfinderin/" target="_blank" rel="noopener noreferrer">@loesungsfinderin ↗</a>
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "heidemarie-hinrichsen-de",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.5",
+    "astro": "7.2.6",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=24.19.0"
+  }
+}

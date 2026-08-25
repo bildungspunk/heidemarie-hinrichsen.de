@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const courses = (await getCollection("courses")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<BaseLayout
+  title="Kurse | Heidi Hinrichsen"
+  description="Kurse von Heidi Hinrichsen für Selbstfürsorge, Körperwahrnehmung und neue Kraft."
+  canonicalPath="/kurse/"
+  pageClass="courses-page"
+>
+  <section class="page-hero section-shell">
+    <p class="eyebrow">Zeit für dich</p>
+    <h1>Kurse, die dich <em>zurück zu dir</em> führen.</h1>
+    <p>Hier findest du alle aktuellen und kommenden Kurse. Jeder Kurs hat seine eigene Seite – und lässt sich als einfache Markdown-Datei ergänzen.</p>
+  </section>
+
+  <section class="course-list section-shell" aria-label="Alle Kurse">
+    {courses.map((course, index) => (
+      <article class="course-list-card">
+        <div class="course-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+        <div>
+          <p class="eyebrow">{course.data.eyebrow}</p>
+          <h2>{course.data.title}</h2>
+          <p class="course-list-subtitle">{course.data.subtitle}</p>
+          <p>{course.data.description}</p>
+        </div>
+        <dl>
+          <div><dt>Termin</dt><dd>{course.data.dates}</dd></div>
+          <div><dt>Ort</dt><dd>{course.data.location}</dd></div>
+        </dl>
+        <a class="button button--primary" href={`/kurse/${course.id}/`}>Kurs ansehen</a>
+      </article>
+    ))}
+  </section>
+
+  <section class="future-courses section-shell">
+    <span aria-hidden="true">✦</span>
+    <div>
+      <p class="eyebrow">Da kommt noch mehr</p>
+      <h2>Weitere Kursräume entstehen.</h2>
+      <p>Neue Angebote können später einfach ergänzt werden – ohne dass die Website dafür neu gebaut werden muss.</p>
+    </div>
+  </section>
+</BaseLayout>

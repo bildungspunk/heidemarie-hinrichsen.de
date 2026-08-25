@@ -1,33 +1,53 @@
 # heidemarie-hinrichsen.de
 
-Technikneutrale Ausgangsbasis für die Website `heidemarie-hinrichsen.de`.
+Markdown-basierte Website für Heidi Hinrichsens Kurse und Inhalte. Die statische
+Website wird mit Astro gebaut und über GitHub Pages veröffentlicht.
 
-## Aktueller Stand
+## Inhalte pflegen
 
-- Veröffentlichung über GitHub Pages aus dem Root-Verzeichnis des Branches `main`
-- eigene Domain über `CNAME`
-- vorläufige Platzhalterseite ohne externe Abhängigkeiten
-- Suchmaschinen-Indexierung bis zur inhaltlichen Freigabe deaktiviert
+Die redaktionellen Inhalte liegen in normalen Markdown-Dateien:
 
-## Domain und DNS
+- `src/content/pages/startseite.md` – Texte der Startseite und Heidi-Profil
+- `src/content/courses/*.md` – ein Kurs pro Datei; daraus entstehen automatisch Kurskarte und Kursseite
+- `src/content/empfehlungen/*.md` – Produkt-/Affiliate-Empfehlungen
+- `src/content/rechtliches/*.md` – Impressum und Datenschutz
 
-Die Domain ist im GitHub-Pages-Projekt als `heidemarie-hinrichsen.de` hinterlegt.
-Beim Domainanbieter sind folgende DNS-Einträge konfiguriert:
+### Neuen Kurs anlegen
 
-- `heidemarie-hinrichsen.de` A → `185.199.108.153`
-- `heidemarie-hinrichsen.de` AAAA → `2606:50c0:8000::153`
-- `www.heidemarie-hinrichsen.de` CNAME → `bildungspunk.github.io`
+1. Eine vorhandene Datei unter `src/content/courses/` kopieren.
+2. Dateinamen, Angaben im Kopf der Datei und den Fließtext ändern.
+3. Datei committen. GitHub Pages baut und veröffentlicht die neue Kursseite automatisch.
 
-GitHub leitet `www` automatisch auf die Hauptdomain um. Nach DNS-Änderungen kann
-die weltweite Auflösung aufgrund bestehender Caches bis zu 24 Stunden dauern.
+### Empfehlung veröffentlichen
 
-## Später Inhalte oder einen Generator einhängen
+Die Datei `src/content/empfehlungen/_vorlage.md` kopieren und umbenennen. Titel,
+Beschreibung, Kurs-ID sowie den Affiliate-Link eintragen und `draft: false`
+setzen. Affiliate-Links werden auf der Website als solche gekennzeichnet.
 
-Die Dateien `index.html` und `styles.css` können direkt ersetzt werden. Falls später Hugo oder ein anderer Static-Site-Generator eingesetzt wird, wird dessen Build-Ausgabe über GitHub Actions veröffentlicht. Domain und DNS bleiben dabei unverändert.
+## Lokal ansehen
 
-Vor der öffentlichen inhaltlichen Freigabe:
+Erforderlich ist Node.js 24.19 oder neuer. Die gewünschte Version steht in
+`.nvmrc`.
 
-1. echte Inhalte und Gestaltung ergänzen
-2. Impressum und Datenschutzerklärung passend zum Einsatzzweck prüfen
-3. `noindex` in `index.html` entfernen
-4. `robots.txt` anpassen oder entfernen
+```bash
+npm install
+npm run dev
+```
+
+Der Produktions-Build wird mit `npm run build` geprüft und in `dist/` erzeugt.
+
+## Veröffentlichung
+
+Ein Push auf `main` startet den GitHub-Pages-Workflow. `public/CNAME` hält die
+eigene Domain `heidemarie-hinrichsen.de` im Build. Bis Texte, Kontaktdaten,
+Impressum und Datenschutz final freigegeben sind, bleiben Suchmaschinen durch
+`noindex` und `public/robots.txt` ausgesperrt.
+
+## Noch offen vor der finalen Freigabe
+
+- Heidi-Porträt oder anderes rechtlich geklärtes Bildmaterial
+- vollständige Anbieterangaben für das Impressum
+- endgültige Datenschutzerklärung passend zu Vimeo, Amazon und weiteren Diensten
+- echte Amazon-Partnerlinks und der vorgeschriebene Amazon-Partnerhinweis
+- geschützter Teilnehmerinnenbereich und Vimeo-Konfiguration
+- Aufhebung von `noindex`, sobald alle Inhalte freigegeben sind

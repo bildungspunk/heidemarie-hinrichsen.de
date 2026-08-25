@@ -1,0 +1,130 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const courses = await getCollection("courses");
+  return courses.map((course) => ({
+    params: { slug: course.id },
+    props: { course },
+  }));
+}
+
+interface Props {
+  course: CollectionEntry<"courses">;
+}
+
+const { course } = Astro.props;
+const { Content } = await render(course);
+const recommendations = (await getCollection("recommendations")).filter(
+  (item) => !item.data.draft && item.data.course === course.id,
+);
+---
+
+<BaseLayout
+  title={`${course.data.title} | Heidi Hinrichsen`}
+  description={course.data.description}
+  canonicalPath={`/kurse/${course.id}/`}
+  pageClass="course-detail"
+  socialImage={null}
+>
+  <section class="course-hero">
+    <div class="section-shell course-hero-inner">
+      <a class="back-link" href="/kurse/">← Alle Kurse</a>
+      <div class="course-hero-title">
+        <p class="eyebrow">{course.data.eyebrow}</p>
+        <h1>{course.data.title}</h1>
+        <p>{course.data.subtitle}</p>
+      </div>
+      <div class="course-hero-facts">
+        <dl>
+          <div><dt>Zeitraum</dt><dd>{course.data.dates}</dd></div>
+          <div><dt>Uhrzeit</dt><dd>{course.data.time}</dd></div>
+          <div><dt>Ort</dt><dd>{course.data.location}</dd></div>
+          <div><dt>Teilnahme</dt><dd>{course.data.price}</dd></div>
+        </dl>
+        <a class="button button--cream" href={course.data.bookingUrl} target="_blank" rel="noopener noreferrer">
+          Bei der {course.data.provider} buchen ↗
+        </a>
+        <small>Die Buchung erfolgt auf der externen Seite des Anbieters.</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="course-content section-shell">
+    <section class="course-prose">
+      <p class="eyebrow">Worum es geht</p>
+      <Content />
+    </section>
+
+    <aside class="course-aside">
+      <p class="eyebrow">Dieser Kurs ist für dich, wenn …</p>
+      <ul class="check-list">
+        {course.data.audience.map((item) => <li>{item}</li>)}
+      </ul>
+    </aside>
+  </div>
+
+  <section class="flow-section">
+    <div class="section-shell">
+      <div class="flow-heading">
+        <p class="eyebrow">45 Minuten für dich</p>
+        <h2>Ein vertrauter Rhythmus – jede Woche neu.</h2>
+      </div>
+      <ol class="flow-list">
+        {course.data.flow.map((step, index) => (
+          <li>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><h3>{step.title}</h3><p>{step.text}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="course-extras section-shell">
+    <article>
+      <p class="eyebrow">Was du mitbringst</p>
+      <h2>Vor allem: dich.</h2>
+      <ul class="plain-list">
+        {course.data.bring.map((item) => <li>{item}</li>)}
+      </ul>
+    </article>
+    <article class="video-access">
+      <span aria-hidden="true">▶</span>
+      <p class="eyebrow">Für Teilnehmerinnen</p>
+      <h2>Üben, wann es für dich passt.</h2>
+      <p>{course.data.videoAccess}</p>
+      <strong>Der geschützte Videobereich folgt.</strong>
+    </article>
+  </section>
+
+  <section class="course-products section-shell">
+    <div>
+      <p class="eyebrow">Im Kurs verwendet</p>
+      <h2>Heidis Empfehlungen</h2>
+      <p>Produkte erscheinen hier erst, wenn Heidi sie persönlich ausgewählt und der passende Affiliate-Link ergänzt wurde.</p>
+    </div>
+    {recommendations.length > 0 ? (
+      <div class="product-grid">
+        {recommendations.map((item) => (
+          <article>
+            <h3>{item.data.title}</h3>
+            <p>{item.data.description}</p>
+            {item.data.link && <a href={item.data.link} target="_blank" rel="sponsored noopener noreferrer">Bei Amazon ansehen – Affiliate-Link ↗</a>}
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="product-placeholder"><span aria-hidden="true">✿</span><p>Die ersten Empfehlungen werden gerade zusammengestellt.</p></div>
+    )}
+  </section>
+
+  <section class="booking-banner">
+    <div class="section-shell">
+      <p>Du möchtest dir diese Zeit schenken?</p>
+      <h2>{course.data.title}</h2>
+      <a class="button button--cream" href={course.data.bookingUrl} target="_blank" rel="noopener noreferrer">Jetzt bei der {course.data.provider} buchen ↗</a>
+    </div>
+  </section>
+</BaseLayout>
