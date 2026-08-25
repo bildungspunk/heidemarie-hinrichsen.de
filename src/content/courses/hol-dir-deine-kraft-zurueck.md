@@ -1,39 +1,23 @@
 ---
-title: "Hol dir deine Kraft zurück"
-subtitle: "Selflove & Selfcare für Frauen ab 40"
-description: "Sechs Wochen für mehr Körpergefühl, innere Ruhe und einen liebevolleren Blick auf dich selbst."
-eyebrow: "Präventionskurs · 6 Wochen"
-badge: "Erster Kurs"
+title: "6-Wochen-Präventionskurs für Frauen 40+"
+subtitle: "Selflove · Selfcare · Balance · Körperbewusstsein"
+description: "Ich leite Frauen liebevoll an wieder in ihre Kraft zu kommen - zurück zu ihrem Kern, zurück zu sich."
 featured: true
 provider: "VHS Niebüll"
 bookingUrl: "https://www.vhs-niebuell.de/kurssuche/kurs/Hol-Dir-Deine-Kraft-zurueck--selfcare-selflove-fuer-Frauen-ab-40/W1863"
-dates: "28. Oktober bis 2. Dezember 2026 · 6 Termine"
-time: "Mittwochs, 19:00–19:45 Uhr"
-price: "72 €"
-location: "Schulzentrum Niebüll · GmS E1.11"
-audience:
-  - "für Frauen ab 40, die im Alltag viel geben"
-  - "für alle, die sich wieder bewusster spüren möchten"
-  - "für Frauen in Veränderung, Neuorientierung oder Übergängen"
-flow:
-  - title: "Ankommen"
-    text: "Körper wahrnehmen, Gedanken leiser werden lassen."
-  - title: "In Bewegung kommen"
-    text: "Sanfte Aktivierung, Lymphfluss und Balance."
-  - title: "Atmen & regulieren"
-    text: "Kleine Atemübungen für mehr Ruhe im Nervensystem."
-  - title: "Nach innen hören"
-    text: "Reflexion, Austausch und neue Perspektiven."
-  - title: "Mitnehmen"
-    text: "Eine kleine, machbare Übung für deine Woche."
-bring:
-  - "bequeme Kleidung und warme Socken"
-  - "eine leichte Decke"
-  - "Neugier auf dich selbst"
-videoAccess: "Ergänzende Videos werden den Teilnehmerinnen nach dem Kurs für drei Monate in einem geschützten Bereich bereitgestellt."
+flyer: "/assets/flyer-hol-dir-deine-kraft-zurueck.png"
+flyerAlt: "Flyer Hol Dir Deine Kraft zurück - Selflove und Selfcare für Frauen 40+ bei der VHS Niebüll"
 order: 1
 ---
 
-Du musst nicht erst erschöpft sein, um dir selbst wichtig zu werden. In diesem Kurs schenkst du dir sechs Wochen lang einen festen Termin: zum Innehalten, Spüren und Kraftsammeln.
+## Infos zum Kurs:
 
-In einer kleinen Gruppe von sechs bis acht Frauen üben wir, die Signale des Körpers wieder wahrzunehmen, Grenzen freundlicher zu setzen und Selbstfürsorge nicht als weitere Aufgabe, sondern als Beziehung zu dir selbst zu verstehen.
+Ich leite Frauen liebevoll an wieder in ihre Kraft zu kommen - zurück zu ihrem Kern, zurück zu sich.
+
+„Erinnere dich daran wer du bist und was in dir steckt. Lerne, wie Du Dir erlaubst glücklich zu sein, Pausen zu nehmen, ruhen zu dürfen und dich gesund und jung zu erhalten.“
+
+Du erhältst hier Dein Rundum-Paket mit alltagstauglichen Skills für Körper, Seele und Geist. Darüber hinaus erhältst du nach dem Kurs einen dreimonatigen Zugang zu meinen Videos, in denen dir die Inhalte nochmal bereitstehen.
+
+Die Plätze sind limitiert für 6-8 Frauen, damit jede Raum für sich hat und sich wohlfühlen kann.
+
+Was bringst du mit? Ein Paar extra Socken, eine leichte Decke und ganz viel Du in deiner Wohlfühlkleidung.

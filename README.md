@@ -7,7 +7,7 @@ Website wird mit Astro gebaut und über GitHub Pages veröffentlicht.
 
 Die redaktionellen Inhalte liegen in normalen Markdown-Dateien:
 
-- `src/content/pages/startseite.md` – Texte der Startseite und Heidi-Profil
+- `src/content/pages/startseite.md` – Startseitenangaben; der freie Text unter dem zweiten `---` ist ausschließlich Heidis eigener Profiltext
 - `src/content/courses/*.md` – ein Kurs pro Datei; daraus entstehen automatisch Kurskarte und Kursseite
 - `src/content/empfehlungen/*.md` – Produkt-/Affiliate-Empfehlungen
 - `src/content/rechtliches/*.md` – Impressum und Datenschutz

@@ -7,12 +7,7 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    kicker: z.string(),
-    intro: z.string(),
     quote: z.string(),
-    aboutTitle: z.string(),
-    aboutLead: z.string(),
-    aboutText: z.array(z.string()),
   }),
 });
 
@@ -22,24 +17,11 @@ const courses = defineCollection({
     title: z.string(),
     subtitle: z.string(),
     description: z.string(),
-    eyebrow: z.string(),
-    badge: z.string().optional(),
     featured: z.boolean().default(false),
     provider: z.string(),
     bookingUrl: z.url(),
-    dates: z.string(),
-    time: z.string(),
-    price: z.string(),
-    location: z.string(),
-    audience: z.array(z.string()),
-    flow: z.array(
-      z.object({
-        title: z.string(),
-        text: z.string(),
-      }),
-    ),
-    bring: z.array(z.string()),
-    videoAccess: z.string(),
+    flyer: z.string(),
+    flyerAlt: z.string(),
     order: z.number().default(0),
   }),
 });
