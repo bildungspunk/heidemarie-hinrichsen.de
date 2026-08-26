@@ -351,9 +351,11 @@ h2 {
 .about {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(3rem, 5vw, 5.5rem);
-  padding-block: clamp(4.5rem, 7vw, 7rem);
+  grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
+  column-gap: clamp(3rem, 5vw, 5.5rem);
+  row-gap: 2rem;
+  align-items: start;
+  padding-block: clamp(3.5rem, 5vw, 5rem) clamp(2rem, 3vw, 3rem);
 }
 
 .section-number {
@@ -367,7 +369,9 @@ h2 {
 }
 
 .about-heading,
-.about-copy {
+.about-copy,
+.heidi-gallery,
+.instagram-card {
   position: relative;
   z-index: 1;
 }
@@ -396,10 +400,11 @@ h2 {
 }
 
 .heidi-gallery {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.65rem;
-  margin: 2rem 0;
+  margin: 0;
 }
 
 .heidi-gallery__item {
@@ -438,11 +443,14 @@ h2 {
 }
 
 .instagram-card {
+  grid-column: 1 / -1;
+  justify-self: end;
+  width: min(100%, 39rem);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 0.9rem;
-  margin-top: 2rem;
+  margin-top: 0;
   padding: 1rem 1.1rem;
   border: 1px solid var(--line);
   border-radius: 1rem;
@@ -481,7 +489,7 @@ h2 {
   grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1.65fr);
   gap: clamp(2.5rem, 4vw, 4.5rem);
   align-items: center;
-  padding-block: clamp(4.5rem, 7vw, 7rem);
+  padding-block: clamp(2.25rem, 3vw, 3rem) clamp(2.5rem, 3.5vw, 3.5rem);
 }
 
 .course-heading > p:last-child {
@@ -493,7 +501,7 @@ h2 {
 .course-card {
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(16rem, 0.74fr) minmax(0, 1.26fr);
+  grid-template-columns: minmax(14rem, 0.62fr) minmax(0, 1.38fr);
   border-radius: 1.5rem;
   color: #fff8ee;
   background: var(--rose);
@@ -501,7 +509,7 @@ h2 {
 }
 
 .course-card-media {
-  min-height: 31rem;
+  min-height: 27rem;
   background: #7b704f;
 }
 
@@ -588,8 +596,8 @@ h2 {
 .recommendations {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 7vw, 7rem);
-  padding-block: clamp(4.5rem, 7vw, 7rem);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(3rem, 4vw, 4rem) clamp(2.5rem, 3.5vw, 3.5rem);
   border-top: 1px solid var(--line);
 }
 
@@ -621,7 +629,7 @@ h2 {
   grid-template-columns: 1fr auto;
   gap: 3rem;
   align-items: end;
-  padding-block: 4rem;
+  padding-block: 2.5rem;
   border-top: 1px solid var(--line);
 }
 
@@ -1227,6 +1235,10 @@ h2 {
 
   .about-copy {
     padding-top: 0;
+  }
+
+  .heidi-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .course-section {
