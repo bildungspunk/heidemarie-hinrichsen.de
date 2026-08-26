@@ -351,9 +351,9 @@ h2 {
 .about {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
-  column-gap: clamp(3rem, 5vw, 5.5rem);
-  row-gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  row-gap: clamp(1.75rem, 3vw, 2.75rem);
   align-items: start;
   padding-block: clamp(3.5rem, 5vw, 5rem) clamp(2rem, 3vw, 3rem);
 }
@@ -367,19 +367,25 @@ h2 {
 }
 
 .about-heading {
-  grid-column: 1 / -1;
-  max-width: 58rem;
+  width: 100%;
+  max-width: 74rem;
+  text-align: center;
 }
 
 .about-copy {
-  grid-column: 1;
-  max-width: 32rem;
+  width: min(100%, 46rem);
+  max-width: none;
   padding-top: 0;
 }
 
 .about h2 {
-  max-width: 16ch;
-  font-size: clamp(3rem, 4.1vw, 4.45rem);
+  max-width: none;
+  font-size: clamp(3rem, 4.2vw, 4.25rem);
+  white-space: nowrap;
+}
+
+.about-title-line {
+  display: inline;
 }
 
 .about-copy p {
@@ -400,8 +406,7 @@ h2 {
 }
 
 .heidi-gallery {
-  grid-column: 2;
-  grid-row: 2 / span 2;
+  width: min(100%, 64rem);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.65rem;
@@ -444,9 +449,8 @@ h2 {
 }
 
 .instagram-card {
-  grid-column: 1;
-  justify-self: stretch;
-  width: 100%;
+  justify-self: center;
+  width: min(100%, 32rem);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -1183,25 +1187,18 @@ h2 {
 }
 
 @media (max-width: 960px) {
-  .about {
-    grid-template-columns: 1fr;
-  }
-
-  .about-heading,
-  .about-copy,
-  .heidi-gallery,
-  .instagram-card {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
   .about-copy {
-    max-width: 46rem;
+    width: min(100%, 46rem);
   }
 
   .about h2 {
     max-width: none;
-    font-size: clamp(2.8rem, 7.5vw, 3.5rem);
+    font-size: clamp(2.75rem, 5.8vw, 3.4rem);
+    white-space: normal;
+  }
+
+  .about-title-line {
+    display: block;
   }
 
   .heidi-gallery {
@@ -1316,7 +1313,7 @@ h2 {
   }
 
   .about h2 {
-    font-size: clamp(2.6rem, 12vw, 3.2rem);
+    font-size: clamp(1.8rem, 8.7vw, 2.75rem);
   }
 
   .heidi-gallery {
