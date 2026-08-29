@@ -1,9 +1,30 @@
 ---
 title: "Impressum"
 description: "Impressum von heidemarie-hinrichsen.de"
-status: "Alpha-Hinweis"
+status: "Angaben gemäß § 5 DDG"
 ---
 
-Die verantwortliche Anbieterin, eine ladungsfähige Anschrift und die vorgesehenen Kontaktdaten werden vor der inhaltlichen Freigabe dieser Website ergänzt.
+## Anbieterin
 
-Diese Alpha-Fassung dient derzeit der gemeinsamen Gestaltung und Abstimmung. Sie ist noch nicht für Suchmaschinen freigegeben.
+Heidemarie Hinrichsen<br />
+Uhlebüller Str. 6<br />
+25899 Niebüll<br />
+Deutschland
+
+Einzelperson
+
+## Kontakt
+
+E-Mail: [heidinstagram@gmail.com](mailto:heidinstagram@gmail.com)
+
+## Berufsbezeichnung
+
+Sozialarbeiterin
+
+## Verantwortlich für den Inhalt
+
+Verantwortlich für den Inhalt nach § 18 Abs. 2 Medienstaatsvertrag:
+
+Heidemarie Hinrichsen<br />
+Uhlebüller Str. 6<br />
+25899 Niebüll
